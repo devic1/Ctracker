@@ -2,13 +2,28 @@ import React, { useState } from "react";
 
 var data = [];
 function Home() {
-  const [loc, setloc] = useState([13, 17]);
+  const [loc, setloc] = useState([null, null]);
+  const [dc, setdc] = useState(null);
+  var id;
   function Tracker() {
-    setloc([loc[0] + 1, loc[1] + 1]);
-    data.push([loc[0], loc[1]]);
+    function success(pos) {
+      let crd = pos.coords;
+      if (data[-1] !== [crd.latitude, crd.longitude]) {
+        setdc(data.length);
+        setloc([crd.latitude, crd.longitude]);
+        data.push([crd.latitude, crd.longitude]);
+      }
+    }
+    function errorc(err) {
+      console.log(err);
+      navigator.geolocation.clearWatch(id);
+      Tracker();
+    }
+    id = navigator.geolocation.watchPosition(success, errorc);
   }
   function Stop() {
     console.log(data);
+    navigator.geolocation.clearWatch(id);
   }
   function Download() {
     console.log(data);
@@ -29,6 +44,8 @@ function Home() {
         <div>Latitude --- {loc[0]}</div>
         <br></br>
         <div>Longitude --- {loc[1]}</div>
+        <br></br>
+        <div>Data Counted --- {dc}</div>
         <br></br>
       </div>
       <div className="align">
