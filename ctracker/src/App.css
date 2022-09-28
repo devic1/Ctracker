@@ -1,0 +1,33 @@
+body {
+  background-color: cadetblue;
+}
+
+.coord {
+  margin: 10%;
+  font-size: large;
+  /* font-style: italic; */
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: black;
+  text-align: center;
+}
+
+.Heading {
+  text-align: center;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: x-large;
+}
+
+.btn {
+  background-color: black;
+  width: 28%;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 12px 10px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.align {
+  text-align: center;
+}
