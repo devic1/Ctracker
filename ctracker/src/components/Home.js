@@ -1,10 +1,21 @@
 import React, { useState } from "react";
+import NoSleep from "nosleep.js";
 
 var data = [];
+
 function Home() {
   const [loc, setloc] = useState([null, null]);
   const [dc, setdc] = useState(null);
   var id;
+  var noSleep = new NoSleep();
+  document.addEventListener(
+    "click",
+    function enableNoSleep() {
+      document.removeEventListener("click", enableNoSleep, false);
+      noSleep.enable();
+    },
+    false
+  );
   function Tracker() {
     function success(pos) {
       let crd = pos.coords;
